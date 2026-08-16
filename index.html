@@ -54,21 +54,17 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 100;
+            font-weight: 600; /* फॉन्ट को 100 से 600 किया ताकि नाम सही दिखे */
             font-size: 1.3rem;
             color: #0f172a;
         }
 
-        .navbar-brand .brand-icon {
-            width: 38px;
-            height: 38px;
-            background: linear-gradient(135deg, #f97316, #dc2626);
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #fff;
-            font-size: 1.2rem;
+        /* यहाँ ब्रांड आइकॉन को छोटा किया गया है */
+        .navbar-brand img {
+            width: 32px;
+            height: 32px;
+            border-radius: 8px;
+            object-fit: cover;
         }
 
         .navbar-actions {
@@ -140,6 +136,13 @@
             color: #fff;
             box-shadow: 0 12px 40px rgba(220, 38, 38, 0.30);
             transition: transform 0.3s ease;
+            overflow: hidden;
+        }
+
+        .app-icon-main img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
         }
 
         .app-icon-main:hover {
@@ -272,8 +275,8 @@
         }
 
         .btn-secondary {
-            background: ​#648b76;
-            color: #1e293b;
+            background: #648b76;
+            color: #ffffff;
             border: none;
             padding: 12px 28px;
             border-radius: 40px;
@@ -288,11 +291,11 @@
 
         .btn-secondary i {
             font-size: 1.2rem;
-            color: ​#648b76;
+            color: #ffffff;
         }
 
         .btn-secondary:hover {
-            background: #e2e8f0;
+            background: #52796f;
             transform: translateY(-3px);
         }
 
@@ -679,7 +682,8 @@
     <header class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <img src="Myicon.png" alt="Melji Aughad Nath" width="100%">
+                <!-- फोटो में से width="100%" हटा दिया है ताकि CSS इसे कंट्रोल कर सके -->
+                <img src="Myicon.png" alt="Melji Aughad Nath">
                 <span>Bhairav Nath</span>
             </div>
             <div class="navbar-actions">
@@ -819,7 +823,7 @@
         </div>
     </section>
 
-    <!-- ===== RATING & REVIEWS (केवल यही सेक्शन रखा है) ===== -->
+    <!-- ===== RATING & REVIEWS ===== -->
     <section class="rating-section">
         <div class="container">
             <h2 class="section-title">
@@ -886,7 +890,6 @@
         <div class="container">
             <div class="footer-links">
                 <a href="#">Contact Us</a>
-                <a href="#">About Sanatan Request</a>
             </div>
             <div class="copyright">
                 © 2026 Sanatan Request • Made with <i class="fas fa-heart" style="color:#dc2626;"></i> for all faiths
@@ -896,3 +899,4 @@
 
 </body>
 </html>
+
