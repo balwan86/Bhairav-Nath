@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sanatan Request - App Download</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8f9fc;
+            color: #1e293b;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* ===== NAVBAR ===== */
+        .navbar {
+            background: #ffffff;
+            padding: 14px 0;
+            box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(8px);
+            background: rgba(255, 255, 255, 0.92);
+        }
+
+        .navbar .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .navbar-brand {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-weight: 800;
+            font-size: 1.3rem;
+            color: #0f172a;
+        }
+
+        .navbar-brand .brand-icon {
+            width: 38px;
+            height: 38px;
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            font-size: 1.2rem;
+        }
+
+        .navbar-actions {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .navbar-actions .search-btn {
+            background: #f1f5f9;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 24px;
+            font-size: 0.85rem;
+            color: #475569;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .navbar-actions .search-btn:hover {
+            background: #e2e8f0;
+        }
+
+        .navbar-actions .icon-btn {
+            background: transparent;
+            border: none;
+            font-size: 1.2rem;
+            color: #475569;
+            cursor: pointer;
+            padding: 6px;
+            border-radius: 50%;
+            transition: 0.2s;
+        }
+
+        .navbar-actions .icon-btn:hover {
+            background: #f1f5f9;
+        }
+
+        /* ===== APP HERO ===== */
+        .app-hero {
+            padding: 40px 0 32px;
+            background: #ffffff;
+            border-bottom: 1px solid #e9edf2;
+        }
+
+        .app-hero .container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        .app-icon-wrapper {
+            flex-shrink: 0;
+        }
+
+        .app-icon-main {
+            width: 128px;
+            height: 128px;
+            border-radius: 28px;
+            background: linear-gradient(145deg, #f97316, #dc2626);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.2rem;
+            color: #fff;
+            box-shadow: 0 12px 40px rgba(220, 38, 38, 0.30);
+            transition: transform 0.3s ease;
+        }
+
+        .app-icon-main:hover {
+            transform: scale(1.02) rotate(-2deg);
+        }
+
+        .app-info {
+            flex: 1;
+            min-width: 260px;
+        }
+
+        .app-info .app-title {
+            font-size: 2.4rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #0f172a;
+            letter-spacing: -0.5px;
+        }
+
+        .app-info .app-title span {
+            background: linear-gradient(135deg, #f97316, #dc2626);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .app-info .app-sub {
+            font-size: 1rem;
+            color: #64748b;
+            margin-top: 4px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .app-info .app-sub .badge {
+            background: #eef2ff;
+            color: #4f46e5;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 2px 12px;
+            border-radius: 20px;
+            letter-spacing: 0.3px;
+        }
+
+        .app-rating-row {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin-top: 10px;
+            flex-wrap: wrap;
+        }
+
+        .app-rating-row .stars {
+            color: #fbbf24;
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+        }
+
+        .app-rating-row .rating-num {
+            font-weight: 700;
+            font-size: 1.1rem;
+            color: #0f172a;
+        }
+
+        .app-rating-row .rating-count {
+            color: #64748b;
+            font-size: 0.9rem;
+        }
+
+        .app-rating-row .divider {
+            width: 1px;
+            height: 24px;
+            background: #e2e8f0;
+        }
+
+        .app-desc {
+            margin-top: 14px;
+            font-size: 1rem;
+            color: #334155;
+            max-width: 700px;
+            line-height: 1.7;
+        }
+
+        .app-desc strong {
+            color: #0f172a;
+        }
+
+        .app-desc .highlight-tag {
+            display: inline-block;
+            background: #fef3c7;
+            color: #b45309;
+            font-weight: 600;
+            padding: 0 8px;
+            border-radius: 6px;
+        }
+
+        .app-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 20px;
+        }
+
+        .btn-google-play {
+            background: #0f172a;
+            color: #fff;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn-google-play i {
+            font-size: 1.4rem;
+        }
+
+        .btn-google-play:hover {
+            background: #1e293b;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(15, 23, 42, 0.20);
+        }
+
+        .btn-secondary {
+            background: #f1f5f9;
+            color: #1e293b;
+            border: none;
+            padding: 12px 28px;
+            border-radius: 40px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+
+        .btn-secondary i {
+            font-size: 1.2rem;
+            color: #64748b;
+        }
+
+        .btn-secondary:hover {
+            background: #e2e8f0;
+            transform: translateY(-2px);
+        }
+
+        .app-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px 32px;
+            margin-top: 20px;
+            padding-top: 18px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .app-meta-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.85rem;
+            color: #64748b;
+        }
+
+        .app-meta-item i {
+            color: #94a3b8;
+            font-size: 1rem;
+            width: 20px;
+        }
+
+        .app-meta-item strong {
+            color: #1e293b;
+            font-weight: 600;
+        }
+
+        /* ===== SCREENSHOTS ===== */
+        .section-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #0f172a;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-title i {
+            color: #f97316;
+        }
+
+        .screenshots {
+            padding: 40px 0;
+            background: #f8f9fc;
+        }
+
+        .screenshot-scroll {
+            display: flex;
+            gap: 18px;
+            overflow-x: auto;
+            padding: 8px 4px 20px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar {
+            height: 6px;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar-track {
+            background: #e9edf2;
+            border-radius: 10px;
+        }
+
+        .screenshot-scroll::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .screenshot-card {
+            flex: 0 0 220px;
+            scroll-snap-align: start;
+            border-radius: 20px;
+            overflow: hidden;
+            background: #fff;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.06);
+            transition: 0.3s;
+            border: 1px solid #f1f5f9;
+        }
+
+        .screenshot-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.10);
+        }
+
+        .screenshot-card .screenshot-img {
+            width: 100%;
+            height: 420px;
+            object-fit: cover;
+            display: block;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3.5rem;
+            color: #b45309;
+        }
+
+        .screenshot-card .screenshot-label {
+            padding: 10px 14px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            text-align: center;
+            background: #fff;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        /* ===== RATING & REVIEWS ===== */
+        .rating-section {
+            padding: 40px 0 56px;
+            background: #f8f9fc;
+        }
+
+        .rating-card {
+            background: #ffffff;
+            border-radius: 28px;
+            padding: 32px 36px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+            border: 1px solid #f1f5f9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .rating-big {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-width: 120px;
+        }
+
+        .rating-big .number {
+            font-size: 3.6rem;
+            font-weight: 800;
+            color: #0f172a;
+            line-height: 1;
+        }
+
+        .rating-big .stars-big {
+            color: #fbbf24;
+            font-size: 1.3rem;
+            letter-spacing: 3px;
+            margin: 6px 0 2px;
+        }
+
+        .rating-big .count {
+            font-size: 0.9rem;
+            color: #64748b;
+        }
+
+        .rating-bars {
+            flex: 1;
+            min-width: 200px;
+        }
+
+        .rating-bar-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 6px;
+        }
+
+        .rating-bar-row .star-label {
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #334155;
+            width: 32px;
+        }
+
+        .rating-bar-row .bar-track {
+            flex: 1;
+            height: 6px;
+            background: #e9edf2;
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .rating-bar-row .bar-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #f97316, #dc2626);
+            border-radius: 10px;
+        }
+
+        .rating-bar-row .bar-percent {
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #475569;
+            width: 36px;
+            text-align: right;
+        }
+
+        .review-snippet {
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid #f1f5f9;
+        }
+
+        .review-snippet .review-text {
+            font-size: 0.95rem;
+            color: #334155;
+            font-style: italic;
+        }
+
+        .review-snippet .review-author {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #0f172a;
+            margin-top: 4px;
+        }
+
+        .review-snippet .review-author span {
+            font-weight: 400;
+            color: #94a3b8;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: #0f172a;
+            color: #cbd5e1;
+            padding: 28px 0;
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 24px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .footer-links a {
+            color: #94a3b8;
+            transition: 0.2s;
+            font-size: 0.85rem;
+        }
+
+        .footer-links a:hover {
+            color: #ffffff;
+        }
+
+        .footer .copyright {
+            color: #64748b;
+            font-size: 0.8rem;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .app-hero .container {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .app-info .app-title {
+                font-size: 2rem;
+            }
+
+            .app-desc {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .app-actions {
+                justify-content: center;
+            }
+
+            .app-meta {
+                justify-content: center;
+            }
+
+            .app-rating-row {
+                justify-content: center;
+            }
+
+            .rating-card {
+                flex-direction: column;
+                text-align: center;
+                padding: 24px 20px;
+            }
+
+            .rating-bars {
+                width: 100%;
+            }
+
+            .screenshot-card {
+                flex: 0 0 160px;
+            }
+
+            .screenshot-card .screenshot-img {
+                height: 320px;
+            }
+
+            .navbar-brand span {
+                display: none;
+            }
+
+            .navbar-actions .search-btn span {
+                display: none;
+            }
+
+            .navbar-actions .search-btn {
+                padding: 8px 12px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .app-icon-main {
+                width: 96px;
+                height: 96px;
+                font-size: 2.4rem;
+                border-radius: 22px;
+            }
+
+            .app-info .app-title {
+                font-size: 1.6rem;
+            }
+
+            .btn-google-play,
+            .btn-secondary {
+                padding: 12px 20px;
+                font-size: 0.9rem;
+                width: 100%;
+                justify-content: center;
+            }
+
+            .app-actions {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .rating-big .number {
+                font-size: 2.8rem;
+            }
+
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        /* ===== ANIMATION ===== */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .app-hero {
+            animation: fadeUp 0.6s ease;
+        }
+        .screenshots {
+            animation: fadeUp 0.6s ease;
+            animation-delay: 0.05s;
+            animation-fill-mode: both;
+        }
+        .rating-section {
+            animation: fadeUp 0.6s ease;
+            animation-delay: 0.12s;
+            animation-fill-mode: both;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <header class="navbar">
+        <div class="container">
+            <div class="navbar-brand">
+                <div class="brand-icon"><i class="fas fa-store-alt"></i></div>
+                <span>Play Store</span>
+            </div>
+            <div class="navbar-actions">
+                <button class="search-btn">
+                    <i class="fas fa-search"></i>
+                    <span>Search</span>
+                </button>
+                <button class="icon-btn"><i class="fas fa-bell"></i></button>
+                <button class="icon-btn"><i class="fas fa-user-circle"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== APP HERO ===== -->
+    <section class="app-hero">
+        <div class="container">
+
+            <div class="app-icon-wrapper">
+                <div class="app-icon-main">
+                    <i class="fas fa-hands-praying"></i>
+                </div>
+            </div>
+
+            <div class="app-info">
+                <h1 class="app-title">
+                    <span>Sanatan</span> Request
+                </h1>
+                <div class="app-sub">
+                    <span>Your Request • Directly to Guruji</span>
+                    <span class="badge">✦ All Religions</span>
+                    <span>• 2M+ Requests</span>
+                </div>
+
+                <div class="app-rating-row">
+                    <span class="stars">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star-half-alt"></i>
+                    </span>
+                    <span class="rating-num">4.9</span>
+                    <span class="rating-count">(48K reviews)</span>
+                    <span class="divider"></span>
+                    <span style="color:#22c55e; font-weight:600;">
+                        <i class="fas fa-check-circle"></i> Verified
+                    </span>
+                </div>
+
+                <p class="app-desc">
+                    <strong>Sanatan Request</strong> — Connect directly with Guruji for your
+                    spiritual needs. Open to all faiths — <span class="highlight-tag">Hindu • Muslim • Sikh • Christian • Parsi</span>
+                    and all religions. Submit your problems, wishes, and receive divine guidance
+                    through <strong>Siddha Yantra</strong>, <strong>Bali Matching</strong>, and
+                    <strong>Ayurvedic Herbal</strong> remedies.
+                </p>
+
+                <div class="app-actions">
+                    <button class="btn-google-play">
+                        <i class="fab fa-google-play"></i> Install
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-download"></i> APK
+                    </button>
+                    <button class="btn-secondary">
+                        <i class="fas fa-heart"></i> Wishlist
+                    </button>
+                </div>
+
+                <div class="app-meta">
+                    <div class="app-meta-item">
+                        <i class="fas fa-user"></i>
+                        <strong>Sanatan Seva</strong> • Developer
+                    </div>
+                    <div class="app-meta-item">
+                        <i class="fas fa-calendar-alt"></i>
+                        Updated <strong>Aug 14, 2026</strong>
+                    </div>
+                    <div class="app-meta-item">
+                        <i class="fas fa-database"></i>
+                        Size <strong>22 MB</strong>
+                    </div>
+                    <div class="app-meta-item">
+                        <i class="fas fa-android"></i>
+                        Requires <strong>Android 5.0+</strong>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- ===== SCREENSHOTS ===== -->
+    <section class="screenshots">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-images"></i> Screenshots
+            </h2>
+            <div class="screenshot-scroll">
+
+                <div class="screenshot-card">
+                    <div class="screenshot-img" style="background:linear-gradient(145deg,#fef3c7,#fcd34d);">
+                        <i class="fas fa-yantra" style="font-size:3rem; color:#b45309;"></i>
+                    </div>
+                    <div class="screenshot-label">🕉️ Siddha Yantra</div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-img" style="background:linear-gradient(145deg,#fce7f3,#f9a8d4);">
+                        <i class="fas fa-heart" style="font-size:3rem; color:#be185d;"></i>
+                    </div>
+                    <div class="screenshot-label">💞 Bali Matching</div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-img" style="background:linear-gradient(145deg,#d1fae5,#6ee7b7);">
+                        <i class="fas fa-leaf" style="font-size:3rem; color:#047857;"></i>
+                    </div>
+                    <div class="screenshot-label">🌿 Herbal Remedies</div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-img" style="background:linear-gradient(145deg,#e0f2fe,#7dd3fc);">
+                        <i class="fas fa-pen-fancy" style="font-size:3rem; color:#0369a1;"></i>
+                    </div>
+                    <div class="screenshot-label">✍️ Submit Request</div>
+                </div>
+
+                <div class="screenshot-card">
+                    <div class="screenshot-img" style="background:linear-gradient(145deg,#f3e8ff,#d8b4fe);">
+                        <i class="fas fa-bell" style="font-size:3rem; color:#7c3aed;"></i>
+                    </div>
+                    <div class="screenshot-label">🔔 Guruji Response</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RATING & REVIEWS (केवल यही सेक्शन रखा है) ===== -->
+    <section class="rating-section">
+        <div class="container">
+            <h2 class="section-title">
+                <i class="fas fa-star-half-alt"></i> Ratings & Reviews
+            </h2>
+            <div class="rating-card">
+
+                <div class="rating-big">
+                    <span class="number">4.9</span>
+                    <span class="stars-big">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                    </span>
+                    <span class="count">48,312 reviews</span>
+                </div>
+
+                <div class="rating-bars">
+                    <div class="rating-bar-row">
+                        <span class="star-label">5 ★</span>
+                        <div class="bar-track"><div class="bar-fill" style="width:84%"></div></div>
+                        <span class="bar-percent">84%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span class="star-label">4 ★</span>
+                        <div class="bar-track"><div class="bar-fill" style="width:11%"></div></div>
+                        <span class="bar-percent">11%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span class="star-label">3 ★</span>
+                        <div class="bar-track"><div class="bar-fill" style="width:3%"></div></div>
+                        <span class="bar-percent">3%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span class="star-label">2 ★</span>
+                        <div class="bar-track"><div class="bar-fill" style="width:1%"></div></div>
+                        <span class="bar-percent">1%</span>
+                    </div>
+                    <div class="rating-bar-row">
+                        <span class="star-label">1 ★</span>
+                        <div class="bar-track"><div class="bar-fill" style="width:1%"></div></div>
+                        <span class="bar-percent">1%</span>
+                    </div>
+
+                    <div class="review-snippet">
+                        <p class="review-text">
+                            " 🙏 Guruji ne meri problem suni aur bahut jald samadhan mila.
+                            Sanatan Request sach mein ek vardaan hai. "
+                        </p>
+                        <p class="review-author">
+                            — Rajesh Kumar <span>• Devotee</span>
+                        </p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Privacy Policy</a>
+                <a href="#">Terms of Service</a>
+                <a href="#">Contact Us</a>
+                <a href="#">About Sanatan Request</a>
+            </div>
+            <div class="copyright">
+                © 2026 Sanatan Request • Made with <i class="fas fa-heart" style="color:#dc2626;"></i> for all faiths
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
