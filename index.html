@@ -243,8 +243,9 @@
         .app-actions {
             display: flex;
             flex-wrap: wrap;
-            gap: 12px;
+            gap: 16px;
             margin-top: 20px;
+            align-items: center;
         }
 
         .btn-google-play {
@@ -297,11 +298,41 @@
             transform: translateY(-3px);
         }
 
+        /* ===== DOWNLOAD BUTTON WRAPPER & ANIMATED HAND ===== */
+        .download-btn-wrapper {
+            position: relative;
+            display: inline-flex;
+        }
+
+        .animated-hand {
+            position: absolute;
+            bottom: -34px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2rem;
+            color: #f97316;
+            pointer-events: none;
+            animation: handPoint 1.2s infinite ease-in-out;
+            filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+            z-index: 10;
+        }
+
+        @keyframes handPoint {
+            0%, 100% {
+                transform: translateX(-50%) translateY(0) scale(1);
+                opacity: 0.75;
+            }
+            50% {
+                transform: translateX(-50%) translateY(-10px) scale(1.18);
+                opacity: 1;
+            }
+        }
+
         .app-meta {
             display: flex;
             flex-wrap: wrap;
             gap: 20px 32px;
-            margin-top: 20px;
+            margin-top: 28px;
             padding-top: 18px;
             border-top: 1px solid #f1f5f9;
         }
@@ -657,17 +688,23 @@
                 font-size: 1.6rem;
             }
 
+            .download-btn-wrapper,
+            .btn-google-play,
+            .btn-secondary {
+                width: 100%;
+            }
+
             .btn-google-play,
             .btn-secondary {
                 padding: 12px 20px;
                 font-size: 0.9rem;
-                width: 100%;
                 justify-content: center;
             }
 
             .app-actions {
                 flex-direction: column;
                 width: 100%;
+                gap: 20px;
             }
 
             .rating-big .number {
@@ -716,16 +753,16 @@
                 <span>Bhairav Nath</span>
             </div>
             <div class="navbar-actions">
-                <!-- Toast added on Search -->
+                <!-- Search Toast -->
                 <button class="search-btn" onclick="showToast('⚠️ Pahle app install kare!')">
                     <i class="fas fa-search"></i>
                     <span>Search</span>
                 </button>
-                <!-- Toast added on Notification -->
+                <!-- Notification Toast -->
                 <button class="icon-btn" onclick="showToast('⚠️ Pahle app install kare!')">
                     <i class="fas fa-bell"></i>
                 </button>
-                <!-- Toast added on Profile -->
+                <!-- Profile Toast -->
                 <button class="icon-btn" onclick="showToast('⚠️ Pahle app install kare!')">
                     <i class="fas fa-user-circle"></i>
                 </button>
@@ -778,14 +815,22 @@
                 </p>
 
                 <div class="app-actions">
-                    <!-- Toast added on Coming soon -->
+                    <!-- Google Play Toast -->
                     <button class="btn-google-play" onclick="showToast('⚠️ Pahle app install kare!')">
                         <i class="fab fa-google-play"></i> Coming soon
                     </button>
-                    <button class="btn-secondary">
-                        <i class="fas fa-download"></i> APK
-                    </button>
-                    <!-- Toast added on Wishlist -->
+                    
+                    <!-- APK Download with Animated Hand -->
+                    <div class="download-btn-wrapper">
+                        <button class="btn-secondary">
+                            <i class="fas fa-download"></i> APK
+                        </button>
+                        <div class="animated-hand">
+                            <i class="fas fa-hand-point-up"></i>
+                        </div>
+                    </div>
+
+                    <!-- Wishlist Toast -->
                     <button class="btn-secondary" onclick="showToast('⚠️ Pahle app install kare!')">
                         <i class="fas fa-heart"></i> Wishlist
                     </button>
@@ -971,7 +1016,6 @@
             toastMsg.innerText = message;
             toast.classList.add("show");
 
-            // Agar pehle se timer chal raha ho to reset karein
             clearTimeout(toastTimer);
             toastTimer = setTimeout(() => {
                 toast.classList.remove("show");
