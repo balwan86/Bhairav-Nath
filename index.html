@@ -34,7 +34,6 @@
 
         /* ===== NAVBAR ===== */
         .navbar {
-            background: #ffffff;
             padding: 14px 0;
             box-shadow: 0 1px 4px rgba(0, 0, 0, 0.06);
             position: sticky;
@@ -54,12 +53,11 @@
             display: flex;
             align-items: center;
             gap: 10px;
-            font-weight: 600; /* फॉन्ट को 100 से 600 किया ताकि नाम सही दिखे */
+            font-weight: 600;
             font-size: 1.3rem;
             color: #0f172a;
         }
 
-        /* यहाँ ब्रांड आइकॉन को छोटा किया गया है */
         .navbar-brand img {
             width: 32px;
             height: 32px;
@@ -390,7 +388,6 @@
             width: 100%;
             height: 420px;
             object-fit: cover;
-            display: block;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -555,6 +552,39 @@
             font-size: 0.8rem;
         }
 
+        /* ===== TOAST NOTIFICATION ===== */
+        .toast-box {
+            visibility: hidden;
+            min-width: 250px;
+            background: rgba(15, 23, 42, 0.95);
+            color: #ffffff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 12px 24px;
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            font-size: 0.9rem;
+            font-weight: 600;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.35);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            opacity: 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .toast-box.show {
+            visibility: visible;
+            opacity: 1;
+            transform: translateX(-50%) translateY(0);
+        }
+
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .app-hero .container {
@@ -682,17 +712,23 @@
     <header class="navbar">
         <div class="container">
             <div class="navbar-brand">
-                <!-- फोटो में से width="100%" हटा दिया है ताकि CSS इसे कंट्रोल कर सके -->
                 <img src="Myicon.png" alt="Melji Aughad Nath">
                 <span>Bhairav Nath</span>
             </div>
             <div class="navbar-actions">
-                <button class="search-btn">
+                <!-- Toast added on Search -->
+                <button class="search-btn" onclick="showToast('⚠️ Pahle app install kare!')">
                     <i class="fas fa-search"></i>
                     <span>Search</span>
                 </button>
-                <button class="icon-btn"><i class="fas fa-bell"></i></button>
-                <button class="icon-btn"><i class="fas fa-user-circle"></i></button>
+                <!-- Toast added on Notification -->
+                <button class="icon-btn" onclick="showToast('⚠️ Pahle app install kare!')">
+                    <i class="fas fa-bell"></i>
+                </button>
+                <!-- Toast added on Profile -->
+                <button class="icon-btn" onclick="showToast('⚠️ Pahle app install kare!')">
+                    <i class="fas fa-user-circle"></i>
+                </button>
             </div>
         </div>
     </header>
@@ -742,13 +778,15 @@
                 </p>
 
                 <div class="app-actions">
-                    <button class="btn-google-play">
+                    <!-- Toast added on Coming soon -->
+                    <button class="btn-google-play" onclick="showToast('⚠️ Pahle app install kare!')">
                         <i class="fab fa-google-play"></i> Coming soon
                     </button>
                     <button class="btn-secondary">
                         <i class="fas fa-download"></i> APK
                     </button>
-                    <button class="btn-secondary">
+                    <!-- Toast added on Wishlist -->
+                    <button class="btn-secondary" onclick="showToast('⚠️ Pahle app install kare!')">
                         <i class="fas fa-heart"></i> Wishlist
                     </button>
                 </div>
@@ -897,29 +935,49 @@
         </div>
     </footer>
 
-<!-- Invisible Element (Button hide kar diya) -->
-<div id="google_translate_element" style="display: none;"></div>
+    <!-- ===== TOAST ELEMENT ===== -->
+    <div id="toastBox" class="toast-box">
+        <i class="fas fa-exclamation-circle" style="color:#f97316;"></i>
+        <span id="toastMsg">Pahle app install kare!</span>
+    </div>
 
-<script type="text/javascript">
-  // User ki language detect karna (jaise 'hi', 'ar', 'fr', 'es' etc.)
-  const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
+    <!-- ===== TRANSLATE SCRIPT ===== -->
+    <div id="google_translate_element" style="display: none;"></div>
 
-  // Agar user ki language English ('en') nahi hai, toh Google translate cookie set karein
-  if (userLang && userLang !== 'en') {
-    document.cookie = `googtrans=/en/${userLang}; path=/;`;
-    document.cookie = `googtrans=/en/${userLang}; path=/; domain=${window.location.hostname};`;
-  }
+    <script type="text/javascript">
+      const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
 
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement({
-      pageLanguage: 'en',
-      autoDisplay: false
-    }, 'google_translate_element');
-  }
-</script>
-<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+      if (userLang && userLang !== 'en') {
+        document.cookie = `googtrans=/en/${userLang}; path=/;`;
+        document.cookie = `googtrans=/en/${userLang}; path=/; domain=${window.location.hostname};`;
+      }
 
-    
+      function googleTranslateElementInit() {
+        new google.translate.TranslateElement({
+          pageLanguage: 'en',
+          autoDisplay: false
+        }, 'google_translate_element');
+      }
+    </script>
+    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
+    <!-- ===== TOAST JAVASCRIPT ===== -->
+    <script>
+        let toastTimer;
+        function showToast(message = "⚠️ Pahle app install kare!") {
+            const toast = document.getElementById("toastBox");
+            const toastMsg = document.getElementById("toastMsg");
+            
+            toastMsg.innerText = message;
+            toast.classList.add("show");
+
+            // Agar pehle se timer chal raha ho to reset karein
+            clearTimeout(toastTimer);
+            toastTimer = setTimeout(() => {
+                toast.classList.remove("show");
+            }, 2500);
+        }
+    </script>
+
 </body>
 </html>
-
