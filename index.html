@@ -844,10 +844,11 @@
         <i class="fas fa-shield-alt"></i> Google Play Protect Verified • 100% Safe & Secure
     </span>
 </div>
-
-
-
-
+     <!-- 👇 YAHAN ADD KAREIN (Facebook Notice Box) -->
+    <div id="fb-guide" style="display: none; background: #fff8e1; border: 1px solid #ffe082; border-radius: 8px; padding: 10px; margin: 8px auto 14px auto; max-width: 90%; text-align: left; font-size: 12px; color: #5d4037;">
+        📌 <b>Facebook User:</b> Download shuru karne ke liye popup me <b>"जारी रखें" (Continue)</b> chunein.
+    </div>
+    
                 <div class="app-meta">
                     <div class="app-meta-item">
                         <i class="fas fa-user"></i>
@@ -1042,6 +1043,13 @@
             toastTimer = setTimeout(() => {
                 toast.classList.remove("show");
             }, 2500);
+        }
+        var ua = navigator.userAgent || navigator.vendor || window.opera;
+        if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
+            var fbBox = document.getElementById("fb-guide");
+            if (fbBox) {
+                fbBox.style.display = "block";
+            }
         }
     </script>
 
