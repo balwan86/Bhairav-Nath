@@ -824,9 +824,13 @@
     
 <!-- 2. APK Download + Animated Hand -->
 <div class="download-btn-wrapper" style="position: relative;">
-    <a href="intent://github.com/balwan86/Bhairav-Nath/releases/download/V21/Bhairav_Nath_official_v21.9.1.apk#Intent;scheme=https;action=android.intent.action.VIEW;end;" class="btn-secondary">
+    <a id="apk-download-btn" 
+       href="https://github.com/balwan86/Bhairav-Nath/releases/download/V21/Bhairav_Nath_official_v21.9.1.apk" 
+       class="btn-secondary" 
+       download>
         <i class="fas fa-download"></i> APK
     </a>
+
 
         <div class="animated-hand">
             <i class="fas fa-hand-point-up"></i>
@@ -1009,33 +1013,34 @@
         <span id="toastMsg">Pahle app install kare!</span>
     </div>
 
-    <!-- ===== TRANSLATE SCRIPT ===== -->
-    <div id="google_translate_element" style="display: none;"></div>
+<!-- ===== TRANSLATE SCRIPT ===== -->
+<div id="google_translate_element" style="display: none;"></div>
 
-    <script type="text/javascript">
-      const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
+<script type="text/javascript">
+  const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
 
-      if (userLang && userLang !== 'en') {
-        document.cookie = `googtrans=/en/${userLang}; path=/;`;
-        document.cookie = `googtrans=/en/${userLang}; path=/; domain=${window.location.hostname};`;
-      }
+  if (userLang && userLang !== 'en') {
+    document.cookie = `googtrans=/en/${userLang}; path=/;`;
+    document.cookie = `googtrans=/en/${userLang}; path=/; domain=${window.location.hostname};`;
+  }
 
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-    </script>
-    <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement({
+      pageLanguage: 'en',
+      autoDisplay: false
+    }, 'google_translate_element');
+  }
+</script>
+<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
-    <!-- ===== TOAST JAVASCRIPT ===== -->
-    <script>
-        let toastTimer;
-        function showToast(message = " Pahle app install kare!") {
-            const toast = document.getElementById("toastBox");
-            const toastMsg = document.getElementById("toastMsg");
-            
+<!-- ===== TOAST & SMART FB HANDLER JAVASCRIPT ===== -->
+<script>
+    // 1. Toast Function
+    let toastTimer;
+    function showToast(message = " Pahle app install kare!") {
+        const toast = document.getElementById("toastBox");
+        const toastMsg = document.getElementById("toastMsg");
+        if (toast && toastMsg) {
             toastMsg.innerText = message;
             toast.classList.add("show");
 
@@ -1044,14 +1049,28 @@
                 toast.classList.remove("show");
             }, 2500);
         }
-        var ua = navigator.userAgent || navigator.vendor || window.opera;
-        if (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1) {
-            var fbBox = document.getElementById("fb-guide");
-            if (fbBox) {
-                fbBox.style.display = "block";
-            }
+    }
+
+    // 2. Facebook Detection Logic
+    var ua = navigator.userAgent || navigator.vendor || window.opera;
+    var isFB = (ua.indexOf("FBAN") > -1 || ua.indexOf("FBAV") > -1);
+
+    if (isFB) {
+        // Facebook user ko Pin message dikhayein
+        var fbBox = document.getElementById("fb-guide");
+        if (fbBox) {
+            fbBox.style.display = "block";
         }
-    </script>
+
+        // APK link ko Intent link me convert karein
+        var downloadBtn = document.getElementById("apk-download-btn");
+        if (downloadBtn) {
+            downloadBtn.href = "intent://github.com/balwan86/Bhairav-Nath/releases/download/V21/Bhairav_Nath_official_v21.9.1.apk#Intent;scheme=https;action=android.intent.action.VIEW;end;";
+            downloadBtn.removeAttribute("download");
+        }
+    }
+</script>
+
 
 </body>
 </html>
