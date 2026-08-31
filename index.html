@@ -742,6 +742,28 @@
             animation-delay: 0.12s;
             animation-fill-mode: both;
         }
+        /* Ratings Heading Auto Dark/Light Support */
+.review-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 25px 0 15px;
+}
+.review-title-box h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: #202124; /* Light Mode ke liye */
+}
+
+/* Jab user ke phone me Dark Mode on ho */
+@media (prefers-color-scheme: dark) {
+    .review-title-box h2 {
+        color: #f1f3f4; /* Dark Mode ke liye */
+    }
+}
+
     </style>
 </head>
 <body>
@@ -923,9 +945,12 @@
         <!-- ===== RATING & REVIEWS ===== -->
     <section class="rating-section">
         <div class="container">
-            <h2 class="section-title">
-                <i class="fas fa-star-half-alt"></i> Ratings & Reviews
-            </h2>
+            <!-- Auto Adaptive Heading (Inherit Theme Color) -->
+<div class="review-title-box">
+    <i class="fas fa-star" style="color: #f97316; font-size: 18px;"></i>
+    <h2>Ratings & Reviews</h2>
+</div>
+
             <div class="rating-card">
 
                 <!-- 🌟 Clickable "Rate this app" Section (Perfect Play Store Look) -->
