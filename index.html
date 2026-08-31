@@ -763,6 +763,85 @@
         color: #f1f3f4; /* Dark Mode ke liye */
     }
 }
+        /* Ratings Heading Auto Adapt */
+.review-title-box {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin: 25px 0 15px;
+}
+.review-title-box h2 {
+    font-size: 18px;
+    font-weight: 700;
+    margin: 0;
+    color: inherit;
+}
+
+/* Footer Dual Theme Support */
+.footer-container {
+    text-align: center;
+    padding: 30px 15px 25px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+.govt-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 20px;
+    background: rgba(76, 175, 80, 0.12);
+    color: #43a047;
+    border: 1px solid rgba(76, 175, 80, 0.3);
+}
+.footer-links-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    font-size: 13px;
+}
+.footer-links-row a.contact-btn {
+    color: #03a9f4;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+}
+.footer-links-row a.privacy-btn {
+    text-decoration: underline;
+    opacity: 0.7;
+    color: inherit;
+}
+.footer-divider {
+    width: 50px;
+    height: 1px;
+    background: currentColor;
+    opacity: 0.15;
+    margin: 4px 0;
+}
+.footer-copy {
+    font-size: 11.5px;
+    line-height: 1.6;
+    opacity: 0.7;
+    color: inherit;
+    margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+    .govt-badge {
+        background: rgba(76, 175, 80, 0.18);
+        color: #81c784;
+        border-color: rgba(129, 199, 132, 0.4);
+    }
+}
+
 
     </style>
 </head>
@@ -1050,40 +1129,38 @@
     </section>
 
 
-    <!-- ===== FOOTER ===== -->
-<footer class="footer-links" style="text-align: center; padding: 30px 15px 20px; display: flex; flex-direction: column; align-items: center; justify-content: center;">
+    <!-- ===== FOOTER SECTION ===== -->
+<footer class="footer-container">
 
-    <!-- 1. Govt Regd Trust Badge -->
-    <div style="margin-bottom: 12px;">
-        <span style="display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 500; color: #2e7d32; background: #e8f5e9; border: 1px solid #c8e6c9; padding: 6px 14px; border-radius: 20px; box-shadow: 0 1px 3px rgba(0,0,0,0.05);">
-            <i class="fas fa-shield-alt" style="color: #2e7d32; font-size: 12px;"></i> Govt. Registered: Rudra Tulshi Enterprise
-        </span>
+    <!-- 1. Govt Registered Trust Badge -->
+    <div class="govt-badge">
+        <i class="fas fa-shield-alt"></i> Govt. Registered: Rudra Tulshi Enterprise
     </div>
 
-    <!-- 2. Telegram Contact Us Link -->
-    <div style="margin-bottom: 15px;">
-        <a href="https://t.me/Melji_Aughad_Nathji" target="_blank" rel="noopener noreferrer" style="color: #0288d1; font-size: 13px; text-decoration: none; font-weight: 500; display: inline-flex; align-items: center; gap: 6px;">
+    <!-- 2. Contact Us & Privacy Policy Links -->
+    <div class="footer-links-row">
+        <a href="https://t.me/Melji_Aughad_Nathji" target="_blank" rel="noopener noreferrer" class="contact-btn">
             <i class="fab fa-telegram-plane"></i> Contact Us
         </a>
+        <span style="opacity: 0.3;">•</span>
+        <a href="privacy.html" class="privacy-btn">Privacy Policy</a>
     </div>
-    <a href="privacy.html" style="color: #757575; font-size: 11px; text-decoration: underline;">Privacy Policy</a>
 
+    <!-- 3. Soft Divider -->
+    <div class="footer-divider"></div>
 
-    <!-- Soft Subtle Divider -->
-    <div style="width: 60px; height: 1px; background: #e0e0e0; margin: 0 auto 15px; border-radius: 2px;"></div>
-
-    <!-- 3. Copyright Text -->
-    <div class="copyright" style="font-size: 12px; color: #757575; line-height: 1.6; margin-bottom: 12px;">
+    <!-- 4. Copyright Notice -->
+    <p class="footer-copy">
         © 2026 Melji Aughad Nath<br>
-        Made with <i class="fas fa-heart" style="color:#dc2626;"></i> for all faiths
-    </div>
+        Made with <i class="fas fa-heart" style="color: #e53935;"></i> for all faiths
+    </p>
 
-    <!-- 4. Thanks Count Badge -->
-    <div style="text-align: center; margin-top: 5px;">
+    <!-- 5. Thanks Count Badge -->
+    <div style="margin-top: 2px;">
         <img 
             src="https://hits.sh/balwan86.github.io/Bhairav-Nath.svg?label=%E2%9D%A4%EF%B8%8F%20thanks&color=ff5722&labelColor=202124" 
             alt="Thanks Count" 
-            style="border-radius: 4px; border: 1px solid #444; display: inline-block; vertical-align: middle;"
+            style="border-radius: 4px; border: 1px solid rgba(255,255,255,0.15); display: inline-block; vertical-align: middle;"
         />
     </div>
 
@@ -1152,6 +1229,7 @@
         }
     }
 </script>
+
 
 </body>
     </html>
