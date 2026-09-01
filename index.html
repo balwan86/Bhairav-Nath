@@ -871,12 +871,29 @@
     align-items: center;
     justify-content: center;
 }
+/* Disable Text Selection for Entire Page */
+* {
+    -webkit-user-select: none; /* Safari, Chrome, Android */
+    -moz-user-select: none;    /* Firefox */
+    -ms-user-select: none;     /* Internet Explorer / Edge */
+    user-select: none;         /* Standard */
+    -webkit-touch-callout: none; /* Long press image popup disable karega */
+}
+
+/* Agar koi Form ya Input field ho to wahan typing allow rahe */
+input, textarea {
+    -webkit-user-select: text;
+    -moz-user-select: text;
+    -ms-user-select: text;
+    user-select: text;
+}
 
 
 
     </style>
 </head>
 <body>
+<body oncontextmenu="return false;">
 
     <!-- ===== NAVBAR ===== -->
     <header class="navbar">
