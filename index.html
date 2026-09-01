@@ -891,6 +891,14 @@ a, button {
     -webkit-touch-callout: none !important;
     -webkit-user-select: none !important;
 }
+        /* Links & Buttons Long-Press Disable */
+a, a *, button, .btn-secondary {
+    -webkit-touch-callout: none !important; /* iOS/Android Link Menu Kill */
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    touch-action: manipulation; /* Double-tap & Hold Menu Preventer */
+}
+
 
     </style>
 </head>
@@ -1298,6 +1306,42 @@ a, button {
         e.preventDefault();
         return false;
     }, true);
+    // 1. Links ke liye Global ContextMenu (Long Press) Kill
+    document.addEventListener('contextmenu', function(e) {
+        if (e.target.closest('a') || e.target.tagName === 'A' || e.target.tagName === 'BUTTON') {
+            e.preventDefault();
+            e.stopPropagation();
+            return false;
+        }
+    }, true);
+
+    // 2. Long Touch Detection on Links (Touch Hold Suppressor)
+    let linkTouchTimer = null;
+    let isLongTouch = false;
+
+    document.addEventListener('touchstart', function(e) {
+        const link = e.target.closest('a');
+        if (link) {
+            isLongTouch = false;
+            linkTouchTimer = setTimeout(function() {
+                isLongTouch = true;
+            }, 250); // 250ms se zyada hold karne par long press mark ho jayega
+        }
+    }, { passive: true });
+
+    document.addEventListener('touchend', function(e) {
+        clearTimeout(linkTouchTimer);
+        const link = e.target.closest('a');
+        if (link && isLongTouch) {
+            // Agar user ne hold kiya tha, to popup menu na khule
+            e.preventDefault();
+            e.stopPropagation();
+        }
+    }, { passive: false });
+
+    document.addEventListener('touchmove', function() {
+        clearTimeout(linkTouchTimer);
+    }, { passive: true });
 </script>
 
 
