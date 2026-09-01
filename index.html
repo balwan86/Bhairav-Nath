@@ -871,24 +871,26 @@
     align-items: center;
     justify-content: center;
 }
-/* Disable Text Selection for Entire Page */
-* {
-    -webkit-user-select: none; /* Safari, Chrome, Android */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer / Edge */
-    user-select: none;         /* Standard */
-    -webkit-touch-callout: none; /* Long press image popup disable karega */
+/* 1. All Elements (Images & Buttons) Long-Press Lock */
+*, *::before, *::after {
+    -webkit-touch-callout: none !important; /* iOS & Android Menu Kill */
+    -webkit-user-select: none !important;
+    user-select: none !important;
+    -webkit-user-drag: none !important;
 }
 
-/* Agar koi Form ya Input field ho to wahan typing allow rahe */
-input, textarea {
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
+/* 2. Images Lock (इमेज पर सेव/डाउनलोड मेनू कभी नहीं खुलेगा) */
+img {
+    pointer-events: none !important; /* सबसे असरदार ट्रिक: इमेज को टच-इम्यून बना देता है */
+    -webkit-user-drag: none !important;
+    user-select: none !important;
 }
 
-
+/* 3. Links & Buttons (क्लिक चलेगा, लेकिन लॉन्ग-प्रेस बंद रहेगा) */
+a, button {
+    -webkit-touch-callout: none !important;
+    -webkit-user-select: none !important;
+}
 
     </style>
 </head>
@@ -1278,6 +1280,24 @@ input, textarea {
             downloadBtn.removeAttribute("download");
         }
     }
+    // 1. Context Menu (Long-press popup) को Capture Phase में ही ब्लॉक करें
+    window.addEventListener('contextmenu', function(e) {
+        e.preventDefault();
+        e.stopPropagation();
+        return false;
+    }, true); // 'true' का मतलब है यह सबसे पहले एक्ज़ीक्यूट होगा
+
+    // 2. Drag & Drop पूरी तरह बंद करें
+    window.addEventListener('dragstart', function(e) {
+        e.preventDefault();
+        return false;
+    }, true);
+
+    // 3. Text Selection Start ब्लॉक करें
+    window.addEventListener('selectstart', function(e) {
+        e.preventDefault();
+        return false;
+    }, true);
 </script>
 
 
