@@ -8,117 +8,99 @@
     <!-- Favicon Icon -->
     <link rel="icon" type="image/png" href="https://balwan86.github.io/Bhairav-Nath/Myicon.png" />
 
-    <!-- External Fonts & Icons (FontAwesome for Telegram Icon) -->
+    <!-- External Fonts & Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
 
     <style>
-        /* Base Light Theme */
+        /* Base Default Dark Theme */
         body { 
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; 
             line-height: 1.6; 
             padding: 24px 16px; 
             max-width: 800px; 
             margin: 0 auto; 
-            background: #f8f9fa; 
-            color: #202124; 
+            background: #121212; 
+            color: #d1d1d1; 
         }
+
         .box { 
-            background: #ffffff; 
+            background: #1c1c1e; 
             padding: 24px; 
-            border-radius: 12px; 
-            border: 1px solid #e0e0e0; 
-            box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+            border-radius: 16px; 
+            border: 1px solid #2c2c2e; 
+            box-shadow: 0 4px 25px rgba(0, 0, 0, 0.6);
         }
+
         h1 { 
-            color: #d84315; 
+            color: #ff7043; 
             font-size: 20px; 
             margin-top: 0; 
             margin-bottom: 8px;
+            font-weight: 700;
         }
+
         h2 { 
-            color: #2e7d32; 
+            color: #81c784; 
             margin-top: 22px; 
             margin-bottom: 8px;
             font-size: 16px; 
             font-weight: 600;
         }
+
         p { 
             font-size: 14px; 
-            color: #444; 
+            color: #bdc1c6; 
             margin: 8px 0; 
         }
+
         hr { 
             border: 0; 
             height: 1px; 
-            background: #e0e0e0; 
+            background: #2c2c2e; 
             margin: 16px 0; 
         }
+
+        /* Disclaimer Card (Matching Experience Box Theme) */
         .disclaimer-box {
             font-size: 13px; 
-            color: #555; 
-            background: #fff8e1; 
-            padding: 12px 14px; 
-            border-left: 3px solid #ff9800; 
-            border-radius: 4px; 
-            margin-top: 12px;
-            line-height: 1.5;
+            color: #d8c2a7; 
+            background: #201b13; 
+            padding: 14px; 
+            border: 1px solid #3d2f1d;
+            border-left: 4px solid #ff9800; 
+            border-radius: 8px; 
+            margin-top: 14px;
+            line-height: 1.6;
         }
         
-        /* Telegram Capsule Button */
+        /* Telegram Capsule Button (Dark Styled) */
         .tg-link {
-            color: #0288d1;
+            color: #4fc3f7;
             text-decoration: none;
             font-weight: 600;
             font-size: 13.5px;
             display: inline-flex;
             align-items: center;
             gap: 7px;
-            background: #e1f5fe;
-            padding: 6px 14px;
+            background: rgba(3, 169, 244, 0.12);
+            padding: 7px 16px;
             border-radius: 20px;
-            border: 1px solid #b3e5fc;
+            border: 1px solid rgba(3, 169, 244, 0.3);
             margin-top: 6px;
             transition: all 0.2s ease;
         }
+
         .tg-link i {
             font-size: 15px;
         }
+
         .tg-link:hover {
-            background: #b3e5fc;
+            background: rgba(3, 169, 244, 0.22);
+            color: #ffffff;
         }
 
-        /* Auto Dark Mode Support */
-        @media (prefers-color-scheme: dark) {
-            body { 
-                background: #121212; 
-                color: #e0e0e0; 
-            }
-            .box { 
-                background: #1e1e1e; 
-                border-color: #333; 
-                box-shadow: 0 4px 20px rgba(0,0,0,0.4);
-            }
-            h1 { color: #ff7043; }
-            h2 { color: #81c784; }
-            p { color: #ccc; }
-            hr { background: #333; }
-            .disclaimer-box { 
-                background: rgba(255, 152, 0, 0.08); 
-                color: #aaa; 
-                border-left-color: #ff9800; 
-            }
-            .tg-link { 
-                color: #4fc3f7; 
-                background: rgba(3, 169, 244, 0.12); 
-                border-color: rgba(3, 169, 244, 0.3); 
-            }
-            .tg-link:hover {
-                background: rgba(3, 169, 244, 0.22);
-            }
-        }
-
-        /* Disable Text Selection for Entire Page */
+        /* Anti-Copy and Touch Protection */
         * {
             -webkit-user-select: none;
             -moz-user-select: none;
@@ -127,7 +109,6 @@
             -webkit-touch-callout: none;
         }
 
-        /* Input fields allow typing */
         input, textarea {
             -webkit-user-select: text;
             -moz-user-select: text;
@@ -135,7 +116,6 @@
             user-select: text;
         }
 
-        /* All Elements Long-Press Lock */
         *, *::before, *::after {
             -webkit-touch-callout: none !important;
             -webkit-user-select: none !important;
@@ -143,17 +123,16 @@
             -webkit-user-drag: none !important;
         }
 
-        /* Images Lock */
         img {
             pointer-events: none !important;
             -webkit-user-drag: none !important;
             user-select: none !important;
         }
 
-        /* Links & Buttons */
         a, button {
             -webkit-touch-callout: none !important;
             -webkit-user-select: none !important;
+            touch-action: manipulation;
         }
     </style>
 </head>
@@ -161,8 +140,8 @@
 
     <div class="box">
         <h1>Privacy Policy / गोपनीयता एवं सेवा नीति</h1>
-        <p><b>App Name:</b> Bhairav Nath</p>
-        <p><b>Enterprise:</b> Rudra Tulshi Enterprise (Govt. Regd. MSME)</p>
+        <p><b style="color: #f1f5f9;">App Name:</b> Bhairav Nath</p>
+        <p><b style="color: #f1f5f9;">Enterprise:</b> Rudra Tulshi Enterprise (Govt. Regd. MSME)</p>
         <hr>
 
         <h2>1. Data Collection (जानकारी का संग्रह)</h2>
@@ -176,12 +155,12 @@
             भैरव नाथ ऐप के माध्यम से भक्तों की समस्याओं के समाधान हेतु सनातन परंपरा, शास्त्रोक्त वैदिक विधान एवं प्राकृतिक पद्धतियों के अनुसार मार्गदर्शन किया जाता है:
         </p>
         <p style="margin-left: 6px; line-height: 1.7;">
-            • <b>वैदिक एवं मंत्रोपचार विधान:</b> यदि किसी साधक या परिवार पर नकारात्मक ऊर्जा, ऊपरी बाधा या आध्यात्मिक असंतुलन का प्रभाव प्रतीत होता है, तभी शास्त्रोक्त विधि, वैदिक रक्षा कवच एवं मंत्रोपचार का प्रयोग किया जाता है।<br>
-            • <b>कुदरती कष्ट व जड़ी-बूटी उपाय:</b> स्वाभाविक या सामान्य शारीरिक अस्वस्थता की स्थिति में पारंपरिक देशी जड़ी-बूटियों एवं प्राकृतिक पद्धतियों के शास्त्रोक्त उपाय सुझाए जाते हैं।<br>
-            • <b>चिकित्सीय सलाह का सम्मान:</b> किसी भी गंभीर अथवा शारीरिक बीमारी की स्थिति में हम हमेशा योग्य डॉक्टर (चिकित्सक) से परामर्श लेने की सलाह देते हैं। आध्यात्मिक उपाय आत्मिक संबल और सकारात्मक ऊर्जा के लिए हैं, यह डॉक्टरी इलाज का विकल्प नहीं हैं।
+            • <b style="color: #f1f5f9;">वैदिक एवं मंत्रोपचार विधान:</b> यदि किसी साधक या परिवार पर नकारात्मक ऊर्जा, ऊपरी बाधा या आध्यात्मिक असंतुलन का प्रभाव प्रतीत होता है, तभी शास्त्रोक्त विधि, वैदिक रक्षा कवच एवं मंत्रोपचार का प्रयोग किया जाता है।<br><br>
+            • <b style="color: #f1f5f9;">कुदरती कष्ट व जड़ी-बूटी उपाय:</b> स्वाभाविक या सामान्य शारीरिक अस्वस्थता की स्थिति में पारंपरिक देशी जड़ी-बूटियों एवं प्राकृतिक पद्धतियों के शास्त्रोक्त उपाय सुझाए जाते हैं।<br><br>
+            • <b style="color: #f1f5f9;">चिकित्सीय सलाह का सम्मान:</b> किसी भी गंभीर अथवा शारीरिक बीमारी की स्थिति में हम हमेशा योग्य डॉक्टर (चिकित्सक) से परामर्श लेने की सलाह देते हैं। आध्यात्मिक उपाय आत्मिक संबल और सकारात्मक ऊर्जा के लिए हैं, यह डॉक्टरी इलाज का विकल्प नहीं हैं।
         </p>
         <div class="disclaimer-box">
-            <b>आध्यात्मिक मर्यादा एवं सेवा भाव:</b> हमारा मुख्य ध्येय जनकल्याण, सकारात्मक ऊर्जा का संचार और उचित मार्गदर्शन देना है। मंत्र साधना एवं पारंपरिक विधान का प्रभाव साधक के पवित्र भाव, अटूट निष्ठा और ईश्वरीय कृपा पर आधारित है।
+            <b style="color: #ff9800;">🙏 आध्यात्मिक मर्यादा एवं सेवा भाव:</b> हमारा मुख्य ध्येय जनकल्याण, सकारात्मक ऊर्जा का संचार और उचित मार्गदर्शन देना है। मंत्र साधना एवं पारंपरिक विधान का प्रभाव साधक के पवित्र भाव, अटूट निष्ठा और ईश्वरीय कृपा पर आधारित है।
         </div>
 
         <h2>4. Contact Us (संपर्क करें)</h2>
