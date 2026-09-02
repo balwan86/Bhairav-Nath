@@ -61,7 +61,7 @@
             padding: 12px 14px; 
             border-left: 3px solid #ff9800; 
             border-radius: 4px; 
-            margin-top: 10px;
+            margin-top: 12px;
             line-height: 1.5;
         }
         
@@ -117,71 +117,75 @@
                 background: rgba(3, 169, 244, 0.22);
             }
         }
+
         /* Disable Text Selection for Entire Page */
-* {
-    -webkit-user-select: none; /* Safari, Chrome, Android */
-    -moz-user-select: none;    /* Firefox */
-    -ms-user-select: none;     /* Internet Explorer / Edge */
-    user-select: none;         /* Standard */
-    -webkit-touch-callout: none; /* Long press image popup disable karega */
-}
+        * {
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
 
-/* Agar koi Form ya Input field ho to wahan typing allow rahe */
-input, textarea {
-    -webkit-user-select: text;
-    -moz-user-select: text;
-    -ms-user-select: text;
-    user-select: text;
-}
-        /* 1. All Elements (Images & Buttons) Long-Press Lock */
-*, *::before, *::after {
-    -webkit-touch-callout: none !important; /* iOS & Android Menu Kill */
-    -webkit-user-select: none !important;
-    user-select: none !important;
-    -webkit-user-drag: none !important;
-}
+        /* Input fields allow typing */
+        input, textarea {
+            -webkit-user-select: text;
+            -moz-user-select: text;
+            -ms-user-select: text;
+            user-select: text;
+        }
 
-/* 2. Images Lock (इमेज पर सेव/डाउनलोड मेनू कभी नहीं खुलेगा) */
-img {
-    pointer-events: none !important; /* सबसे असरदार ट्रिक: इमेज को टच-इम्यून बना देता है */
-    -webkit-user-drag: none !important;
-    user-select: none !important;
-}
+        /* All Elements Long-Press Lock */
+        *, *::before, *::after {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+            user-select: none !important;
+            -webkit-user-drag: none !important;
+        }
 
-/* 3. Links & Buttons (क्लिक चलेगा, लेकिन लॉन्ग-प्रेस बंद रहेगा) */
-a, button {
-    -webkit-touch-callout: none !important;
-    -webkit-user-select: none !important;
-}
+        /* Images Lock */
+        img {
+            pointer-events: none !important;
+            -webkit-user-drag: none !important;
+            user-select: none !important;
+        }
 
-
+        /* Links & Buttons */
+        a, button {
+            -webkit-touch-callout: none !important;
+            -webkit-user-select: none !important;
+        }
     </style>
 </head>
-<body>
-    <body oncontextmenu="return false;">
+<body oncontextmenu="return false;">
 
     <div class="box">
-        <h1>Privacy Policy / गोपनीयता नीति</h1>
+        <h1>Privacy Policy / गोपनीयता एवं सेवा नीति</h1>
         <p><b>App Name:</b> Bhairav Nath</p>
         <p><b>Enterprise:</b> Rudra Tulshi Enterprise (Govt. Regd. MSME)</p>
         <hr>
 
         <h2>1. Data Collection (जानकारी का संग्रह)</h2>
-        <p>हम केवल वही बुनियादी जानकारी (जैसे आपका नाम या अर्जी का संदेश) लेते हैं जो आप स्वेच्छा से गुरुजी तक अपनी समस्या पहुँचाने के लिए भेजते हैं।</p>
+        <p>हम केवल वही प्राथमिक विवरण (जैसे आपका नाम एवं अर्जी का संदेश) प्राप्त करते हैं, जो आप स्वेच्छा से गुरुजी के समक्ष अपनी प्रार्थना व समस्या पहुँचाने हेतु साझा करते हैं।</p>
         
-        <h2>2. Data Privacy & Security (गोपनीयता)</h2>
-        <p>भक्तों द्वारा भेजी गई अर्जी और जानकारी पूरी तरह से सुरक्षित एवं गुप्त रखी जाती है। हम किसी भी तीसरे पक्ष (Third Party) के साथ आपका व्यक्तिगत डेटा साझा नहीं करते।</p>
+        <h2>2. Data Privacy & Security (गोपनीयता एवं सुरक्षा)</h2>
+        <p>भक्तों द्वारा प्रेषित अर्जी, प्रार्थना एवं व्यक्तिगत विवरण की मर्यादा व गोपनीयता का पूरा ध्यान रखा जाता है। आपकी किसी भी जानकारी को किसी तीसरे पक्ष (Third Party) के साथ साझा नहीं किया जाता।</p>
 
-        <h2>3. Spiritual & Tantrokt Ritual Services (आध्यात्मिक एवं शास्त्रोक्त तन्त्र सेवाएँ)</h2>
+        <h2>3. Guidance & Remedial Services (मार्गदर्शन एवं सेवा विधान)</h2>
         <p>
-            यह ऐप सनातन परंपरा, वैदिक पूजा-विधान, तन्त्रोक्त भैरव अनुष्ठान एवं आध्यात्मिक मार्गदर्शन के लिए है। ऐप के माध्यम से दी जाने वाली सभी सेवाएँ, रक्षा कवच और परामर्श प्राचीन शास्त्रोक्त मान्यताओं एवं व्यक्तिगत आस्था पर आधारित हैं।
+            भैरव नाथ ऐप के माध्यम से भक्तों की समस्याओं के समाधान हेतु सनातन परंपरा, शास्त्रोक्त वैदिक विधान एवं प्राकृतिक पद्धतियों के अनुसार मार्गदर्शन किया जाता है:
+        </p>
+        <p style="margin-left: 6px; line-height: 1.7;">
+            • <b>वैदिक एवं मंत्रोपचार विधान:</b> यदि किसी साधक या परिवार पर नकारात्मक ऊर्जा, ऊपरी बाधा या आध्यात्मिक असंतुलन का प्रभाव प्रतीत होता है, तभी शास्त्रोक्त विधि, वैदिक रक्षा कवच एवं मंत्रोपचार का प्रयोग किया जाता है।<br>
+            • <b>कुदरती कष्ट व जड़ी-बूटी उपाय:</b> स्वाभाविक या सामान्य शारीरिक अस्वस्थता की स्थिति में पारंपरिक देशी जड़ी-बूटियों एवं प्राकृतिक पद्धतियों के शास्त्रोक्त उपाय सुझाए जाते हैं।<br>
+            • <b>चिकित्सीय सलाह का सम्मान:</b> किसी भी गंभीर अथवा शारीरिक बीमारी की स्थिति में हम हमेशा योग्य डॉक्टर (चिकित्सक) से परामर्श लेने की सलाह देते हैं। आध्यात्मिक उपाय आत्मिक संबल और सकारात्मक ऊर्जा के लिए हैं, यह डॉक्टरी इलाज का विकल्प नहीं हैं।
         </p>
         <div class="disclaimer-box">
-            <b>Disclaimer:</b> हम किसी भी प्रकार के अंधविश्वास, अवास्तविक चमत्कारों या 100% निश्चित परिणाम का दावा नहीं करते। सभी अनुष्ठान केवल ईश्वर भक्ति, आत्मिक शांति और सकारात्मक ऊर्जा के प्रसार के उद्देश्य से किए जाते हैं।
+            <b>आध्यात्मिक मर्यादा एवं सेवा भाव:</b> हमारा मुख्य ध्येय जनकल्याण, सकारात्मक ऊर्जा का संचार और उचित मार्गदर्शन देना है। मंत्र साधना एवं पारंपरिक विधान का प्रभाव साधक के पवित्र भाव, अटूट निष्ठा और ईश्वरीय कृपा पर आधारित है।
         </div>
 
         <h2>4. Contact Us (संपर्क करें)</h2>
-        <p>किसी भी सवाल या सहायता के लिए आप हमारे टेलीग्राम पर संपर्क कर सकते हैं:</p>
+        <p>किसी भी मार्गदर्शन, शंका या सेवा संबंधी सहायता के लिए आप सीधे हमारे टेलीग्राम पर संपर्क कर सकते हैं:</p>
         <a href="https://t.me/Melji_Aughad_Nathji" target="_blank" rel="noopener noreferrer" class="tg-link">
             <i class="fab fa-telegram-plane"></i> @Melji_Aughad_Nathji
         </a>
@@ -206,24 +210,25 @@ a, button {
           autoDisplay: false
         }, 'google_translate_element');
       }
-        // 1. Context Menu (Long-press popup) को Capture Phase में ही ब्लॉक करें
-    window.addEventListener('contextmenu', function(e) {
-        e.preventDefault();
-        e.stopPropagation();
-        return false;
-    }, true); // 'true' का मतलब है यह सबसे पहले एक्ज़ीक्यूट होगा
 
-    // 2. Drag & Drop पूरी तरह बंद करें
-    window.addEventListener('dragstart', function(e) {
-        e.preventDefault();
-        return false;
-    }, true);
+      // 1. Context Menu Block
+      window.addEventListener('contextmenu', function(e) {
+          e.preventDefault();
+          e.stopPropagation();
+          return false;
+      }, true);
 
-    // 3. Text Selection Start ब्लॉक करें
-    window.addEventListener('selectstart', function(e) {
-        e.preventDefault();
-        return false;
-    }, true);
+      // 2. Drag & Drop Block
+      window.addEventListener('dragstart', function(e) {
+          e.preventDefault();
+          return false;
+      }, true);
+
+      // 3. Text Selection Block
+      window.addEventListener('selectstart', function(e) {
+          e.preventDefault();
+          return false;
+      }, true);
     </script>
     <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
