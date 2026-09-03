@@ -134,6 +134,24 @@
             -webkit-user-select: none !important;
             touch-action: manipulation;
         }
+        /* ट्रांसलेशन चालू रहेगा, लेकिन ऊपर की सफेद पट्टी छुप जाएगी */
+.goog-te-banner-frame.skiptranslate, 
+.goog-te-banner-frame,
+iframe.goog-te-banner-frame {
+    display: none !important;
+}
+body {
+    top: 0px !important;
+    position: static !important;
+}
+#goog-gt-tt, .goog-te-balloon-frame {
+    display: none !important;
+}
+.goog-text-highlight {
+    background: transparent !important;
+    box-shadow: none !important;
+}
+
     </style>
 </head>
 <body oncontextmenu="return false;">
@@ -176,6 +194,12 @@
     <div id="google_translate_element" style="display: none;"></div>
 
     <script type="text/javascript">
+        // पुरानी खराब ट्रांसलेशन कुकी को रीसेट करने के लिए
+if (document.cookie.indexOf("googtrans=/en/hi") > -1) {
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    document.cookie = "googtrans=; expires=Thu, 01 Jan 1970 00:00:00 UTC; domain=" + window.location.hostname + "; path=/;";
+}
+
       const userLang = (navigator.language || navigator.userLanguage).slice(0, 2);
 
       if (userLang && userLang !== 'en') {
