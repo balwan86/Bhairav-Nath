@@ -366,48 +366,75 @@
             font-weight: 600;
         }
 
-        /* ===== SCREENSHOTS (DARK) ===== */
-        .screenshots {
-            padding: 40px 0;
-            background: #121212;
-            animation: fadeUp 0.6s ease;
-            animation-delay: 0.05s;
-            animation-fill-mode: both;
-        }
 
-        .screenshot-scroll {
-            display: flex;
-            gap: 18px;
-            overflow-x: auto;
-            padding: 8px 4px 20px;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
-        }
+        /* ===== SCREENSHOTS (RESPONSIVE & CENTERED) ===== */
+.screenshot-scroll {
+    display: flex;
+    gap: 18px;
+    overflow-x: auto;
+    padding: 12px 20px 24px;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    align-items: center;
+}
 
-        .screenshot-scroll::-webkit-scrollbar {
-            height: 6px;
-        }
+/* PC / Laptop Screen (Jab screen 1200px ya badi ho) */
+@media (min-width: 1200px) {
+    .screenshot-scroll {
+        justify-content: center; /* PC par sare cards bilkul center me aayenge */
+        overflow-x: visible;     /* PC par scrollbar gayab ho jayega aur gallery view lagega */
+    }
+}
 
-        .screenshot-scroll::-webkit-scrollbar-track {
-            background: #1c1c1e;
-            border-radius: 10px;
-        }
+.screenshot-scroll::-webkit-scrollbar {
+    height: 6px;
+}
 
-        .screenshot-scroll::-webkit-scrollbar-thumb {
-            background: #333338;
-            border-radius: 10px;
-        }
+.screenshot-scroll::-webkit-scrollbar-track {
+    background: #1c1c1e;
+    border-radius: 10px;
+}
 
-        .screenshot-card {
-            flex: 0 0 220px;
-            scroll-snap-align: start;
-            border-radius: 20px;
-            overflow: hidden;
-            background: #1c1c1e;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
-            transition: 0.3s;
-            border: 1px solid #2c2c2e;
-        }
+.screenshot-scroll::-webkit-scrollbar-thumb {
+    background: #333338;
+    border-radius: 10px;
+}
+
+.screenshot-card {
+    flex: 0 0 220px;
+    scroll-snap-align: start;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #1c1c1e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    transition: 0.3s;
+    border: 1px solid #2c2c2e;
+}
+
+.screenshot-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+}
+
+.screenshot-card .screenshot-img {
+    width: 100%;
+    height: 420px;
+    object-fit: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.screenshot-card .screenshot-label {
+    padding: 10px 14px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #9aa0a6;
+    text-align: center;
+    background: #1c1c1e;
+    border-top: 1px solid #2c2c2e;
+}
+
 
         .screenshot-card:hover {
             transform: translateY(-4px);
@@ -923,47 +950,49 @@
     </section>
 
     <!-- ===== SCREENSHOTS ===== -->
-    <div class="screenshot-scroll">
-        <!-- Screenshot 1 -->
-        <div class="screenshot-card">
-            <div class="screenshot-img">
-                <img src="Hi.jpg" alt="Hindi" style="width:100%; height:100%; object-fit:cover; display:block;">
+    <section class="screenshots">
+        <div class="screenshot-scroll">
+            <!-- Screenshot 1 -->
+            <div class="screenshot-card">
+                <div class="screenshot-img">
+                    <img src="Hi.jpg" alt="Hindi" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div class="screenshot-label">🕉️ Hindi</div>
             </div>
-            <div class="screenshot-label">🕉️ Hindi</div>
-        </div>
 
-        <!-- Screenshot 2 -->
-        <div class="screenshot-card">
-            <div class="screenshot-img">
-                <img src="En.jpg" alt="English" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <!-- Screenshot 2 -->
+            <div class="screenshot-card">
+                <div class="screenshot-img">
+                    <img src="En.jpg" alt="English" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div class="screenshot-label">💞 English</div>
             </div>
-            <div class="screenshot-label">💞 English</div>
-        </div>
 
-        <!-- Screenshot 3 -->
-        <div class="screenshot-card">
-            <div class="screenshot-img">
-                <img src="Ur.jpg" alt="Urdu" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <!-- Screenshot 3 -->
+            <div class="screenshot-card">
+                <div class="screenshot-img">
+                    <img src="Ur.jpg" alt="Urdu" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div class="screenshot-label">🌿 Urdu</div>
             </div>
-            <div class="screenshot-label">🌿 Urdu</div>
-        </div>
 
-        <!-- Screenshot 4 -->
-        <div class="screenshot-card">
-            <div class="screenshot-img">
-                <img src="Bn.jpg" alt="Bangladeshi" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <!-- Screenshot 4 -->
+            <div class="screenshot-card">
+                <div class="screenshot-img">
+                    <img src="Bn.jpg" alt="Bangladeshi" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div class="screenshot-label">✍️ Bangladeshi</div>
             </div>
-            <div class="screenshot-label">✍️ Bangladeshi</div>
-        </div>
 
-        <!-- Screenshot 5 -->
-        <div class="screenshot-card">
-            <div class="screenshot-img">
-                <img src="Ru.jpg" alt="Russian" style="width:100%; height:100%; object-fit:cover; display:block;">
+            <!-- Screenshot 5 -->
+            <div class="screenshot-card">
+                <div class="screenshot-img">
+                    <img src="Ru.jpg" alt="Russian" style="width:100%; height:100%; object-fit:cover; display:block;">
+                </div>
+                <div class="screenshot-label">🔔 Russian</div>
             </div>
-            <div class="screenshot-label">🔔 Russian</div>
         </div>
-    </div>
+    </section>
 
     <!-- ===== RATING & REVIEWS ===== -->
     <section class="rating-section">
